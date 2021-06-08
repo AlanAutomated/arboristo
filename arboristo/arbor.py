@@ -100,7 +100,7 @@ class Tree(object):
                 raise ValueError("The get() method requires a string value.")
             self, value = args
             self.__dict__.__setitem__("path", value)
-            result = func(*args, **kwargs) 
+            result = func(*args, **kwargs)
             return func(*args, **kwargs)
 
         return wrapper
@@ -137,7 +137,8 @@ class Tree(object):
 
     @_set_path
     def get(self, value):
-        """Set the lazy path to match.
+        """
+        Set the lazy path to match.
 
         Parameters
         -----------
