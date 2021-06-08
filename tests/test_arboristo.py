@@ -8,7 +8,8 @@ def test_version():
 
 @pytest.fixture
 def return_dict():
-    """
+    """Expanded JSON
+
         "interfaces": {
             "Tunnel0": {
                 "state": "UP"
