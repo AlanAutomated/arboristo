@@ -41,7 +41,7 @@ class Tree(object):
         self.tree = tree
 
     def _set_branch(func):
-        """Decorator for from_dict to set and return list of kv matches."""
+        """Decorator for from_dict() to set and return list of kv matches."""
 
         @wraps(func)
         def wrapper(*args, **kwargs):
@@ -57,7 +57,7 @@ class Tree(object):
         return wrapper
 
     def _set_dict(func):
-        """Decorator for from_dict to set the source dictionary."""
+        """Decorator for from_dict() to set the source dictionary."""
 
         @wraps(func)
         def wrapper(*args, **kwargs):
@@ -74,7 +74,7 @@ class Tree(object):
         return wrapper
 
     def _set_limb(func):
-        """Decorator for from_dict to set matching paths."""
+        """Decorator for from_dict() to set matching paths."""
 
         @wraps(func)
         def wrapper(*args, **kwargs):
@@ -92,7 +92,7 @@ class Tree(object):
         return wrapper
 
     def _set_path(func):
-        """get decorator to set the search string."""
+        """Decorator for get() to set the search string."""
 
         @wraps(func)
         def wrapper(*args, **kwargs):
@@ -100,12 +100,13 @@ class Tree(object):
                 raise ValueError("The get() method requires a string value.")
             self, value = args
             self.__dict__.__setitem__("path", value)
+            result = func(*args, **kwargs) 
             return func(*args, **kwargs)
 
         return wrapper
 
     def _set_tree(func):
-        """Decorator for from_dict to set iterated paths."""
+        """Decorator for from_dict() to set iterated paths."""
 
         @wraps(func)
         def wrapper(*args, **kwargs):
@@ -136,8 +137,7 @@ class Tree(object):
 
     @_set_path
     def get(self, value):
-        """
-        Set the lazy path to match.
+        """Set the lazy path to match.
 
         Parameters
         -----------
