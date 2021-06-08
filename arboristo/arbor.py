@@ -120,17 +120,14 @@ class Tree(object):
 
     def _get_branch(self, limbs: list) -> list:
         """Get matches by kv."""
-
         return [({"path": ".".join(x), "value": self._get_twig(x)}) for x in limbs]
 
     def _get_twig(self, path: str) -> Any:
         """Get the value for the given path."""
-
         return reduce(operator.getitem, path, self.source)
 
     def _split_dict(self, tree_dict: dict, pos: list = []) -> Generator:
         """Lazy iterator to split the dict into unique paths."""
-
         for x, y in tree_dict.items():
             if isinstance(y, dict):
                 yield from self._split_dict(y, pos + [x])
@@ -139,7 +136,8 @@ class Tree(object):
 
     @_set_path
     def get(self, value):
-        """Set the lazy path to match.
+        """
+        Set the lazy path to match.
 
         Parameters
         -----------
