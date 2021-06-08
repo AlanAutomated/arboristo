@@ -155,7 +155,8 @@ class Tree(object):
     @_set_tree
     @_set_dict
     def from_dict(self, value) -> list:
-        """Set the source dictionary.
+        """
+        Set the source dictionary.
 
         Parameters
         -----------
