@@ -9,7 +9,6 @@ def test_version():
 @pytest.fixture
 def return_dict():
     """
-    {
         "interfaces": {
             "Tunnel0": {
                 "state": "UP"
@@ -32,7 +31,7 @@ def test_path_value():
     """Value of path is the argument passed to get()""" 
     t = Tree()
     t.get('abc')
-    assert t.path is 'abc'
+    assert t.path == 'abc'
 
 def test_path_not_none():
     """Calling from_dict() before get() raises a type error"""
