@@ -37,8 +37,10 @@ jobs:
       if: matrix.python-version == '3.9'
       run: |
         tox -e py39
-    - name: Upload coverage
+      - name: Upload coverage
       uses: "codecov/codecov-action@v1"
+      run : |
+        coverage xml
       with:
         token: ${{ secrets.CODECOV_TOKEN }}
         fail_ci_if_error: true
