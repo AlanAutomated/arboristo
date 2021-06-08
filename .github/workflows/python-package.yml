@@ -37,12 +37,10 @@ jobs:
       if: matrix.python-version == '3.9'
       run: |
         tox -e py39
-    - name: Generate coverage
-      run: |
-        coverage xml  
     - name: Upload coverage
       uses: "codecov/codecov-action@v1"
       with:
         token: ${{ secrets.CODECOV_TOKEN }}
+        directory: .
         files: ./coverage.xml
         fail_ci_if_error: true
