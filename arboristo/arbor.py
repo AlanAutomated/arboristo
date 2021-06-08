@@ -7,7 +7,6 @@ from typing import Any, Generator
 
 
 class Tree(object):
-
     """A class to lazily iterate a dictionary for path matching.
 
     Attributes
@@ -42,7 +41,7 @@ class Tree(object):
         self.tree = tree
 
     def _set_branch(func):
-        """from_dict decorator to set and return list of kv matches."""
+        """Decorator for from_dict to set and return list of kv matches."""
 
         @wraps(func)
         def wrapper(*args, **kwargs):
@@ -58,7 +57,7 @@ class Tree(object):
         return wrapper
 
     def _set_dict(func):
-        """from_dict decorator to set the source dictionary."""
+        """Decorator for from_dict to set the source dictionary."""
 
         @wraps(func)
         def wrapper(*args, **kwargs):
@@ -75,7 +74,7 @@ class Tree(object):
         return wrapper
 
     def _set_limb(func):
-        """from_dict decorator to set matching paths."""
+        """Decorator for from_dict to set matching paths."""
 
         @wraps(func)
         def wrapper(*args, **kwargs):
@@ -106,7 +105,7 @@ class Tree(object):
         return wrapper
 
     def _set_tree(func):
-        """from_dict decorator to set iterated paths."""
+        """Decorator for from_dict to set iterated paths."""
 
         @wraps(func)
         def wrapper(*args, **kwargs):
