@@ -7,7 +7,8 @@ from typing import Any, Generator
 
 
 class Tree(object):
-    """A class to lazily iterate a dictionary for path matching
+
+    """A class to lazily iterate a dictionary for path matching.
 
     Attributes
     -----------
@@ -41,7 +42,7 @@ class Tree(object):
         self.tree = tree
 
     def _set_branch(func):
-        """from_dict decorator to set and return list of kv matches"""
+        """from_dict decorator to set and return list of kv matches."""
 
         @wraps(func)
         def wrapper(*args, **kwargs):
@@ -49,7 +50,7 @@ class Tree(object):
                 raise ValueError("The from_dict() argument must not be empty.")
 
             self, _ = args
-            func(*args, **kwargs)
+            result = func(*args, **kwargs)
             branch = self._get_branch(self.limb)
             self.__dict__.__setitem__("branch", branch)
             return branch
@@ -57,7 +58,7 @@ class Tree(object):
         return wrapper
 
     def _set_dict(func):
-        """from_dict decorator to set the source dictionary"""
+        """from_dict decorator to set the source dictionary."""
 
         @wraps(func)
         def wrapper(*args, **kwargs):
@@ -68,12 +69,13 @@ class Tree(object):
                 raise ValueError("The from_dict() argument must not be empty.")
 
             self.__dict__.__setitem__("source", value)
-            return func(*args, **kwargs)
+            result = func(*args, **kwargs)
+            return result
 
         return wrapper
 
     def _set_limb(func):
-        """from_dict decorator to set matching paths"""
+        """from_dict decorator to set matching paths."""
 
         @wraps(func)
         def wrapper(*args, **kwargs):
@@ -91,7 +93,7 @@ class Tree(object):
         return wrapper
 
     def _set_path(func):
-        """get decorator to set the search string"""
+        """get decorator to set the search string."""
 
         @wraps(func)
         def wrapper(*args, **kwargs):
@@ -104,7 +106,7 @@ class Tree(object):
         return wrapper
 
     def _set_tree(func):
-        """from_dict decorator to set iterated paths"""
+        """from_dict decorator to set iterated paths."""
 
         @wraps(func)
         def wrapper(*args, **kwargs):
@@ -118,17 +120,17 @@ class Tree(object):
         return wrapper
 
     def _get_branch(self, limbs: list) -> list:
-        """Get matches by kv"""
+        """Get matches by kv."""
 
         return [({"path": ".".join(x), "value": self._get_twig(x)}) for x in limbs]
 
     def _get_twig(self, path: str) -> Any:
-        """Get the value for the given path"""
+        """Get the value for the given path."""
 
         return reduce(operator.getitem, path, self.source)
 
     def _split_dict(self, tree_dict: dict, pos: list = []) -> Generator:
-        """Lazy iterator to split the dict into unique paths"""
+        """Lazy iterator to split the dict into unique paths."""
 
         for x, y in tree_dict.items():
             if isinstance(y, dict):
@@ -138,7 +140,7 @@ class Tree(object):
 
     @_set_path
     def get(self, value):
-        """Set the lazy path to match
+        """Set the lazy path to match.
 
         Parameters
         -----------
@@ -156,7 +158,7 @@ class Tree(object):
     @_set_tree
     @_set_dict
     def from_dict(self, value) -> list:
-        """Set the source dictionary
+        """Set the source dictionary.
 
         Parameters
         -----------
