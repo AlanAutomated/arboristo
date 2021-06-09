@@ -49,7 +49,7 @@ def test_from_dict_empty():
     """An empty dict raises a value error."""
     with pytest.raises(ValueError):
         t = Tree()
-        assert t.from_dict({})
+        assert t.get('foo').from_dict({})
 
 
 def test_path_not_none():

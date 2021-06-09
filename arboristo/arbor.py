@@ -45,9 +45,6 @@ class Tree(object):
 
         @wraps(func)
         def wrapper(*args, **kwargs):
-            if len(args) != 2:
-                raise ValueError("The from_dict() argument must not be empty.")
-
             self, _ = args
             result = func(*args, **kwargs)
             branch = self._get_branch(self.limb)
