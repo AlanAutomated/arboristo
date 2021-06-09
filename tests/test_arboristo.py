@@ -32,7 +32,7 @@ def test_path_type():
 
 
 def test_path_empty():
-    """Path arugment is not empty"""
+    """Path arugment is not empty."""
     with pytest.raises(ValueError):
         t = Tree()
         assert t.get()
