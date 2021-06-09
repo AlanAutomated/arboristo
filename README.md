@@ -5,5 +5,4 @@
 A light-weight package to lazily traverse a deeply nested dictionary.
 
 ![demo](demo.gif)
-> Click the demo to expand
 
