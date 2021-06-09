@@ -46,10 +46,10 @@ def test_path_value():
 
 
 def test_path_not_none():
-    """Calling from_dict() before get() raises a type error."""
+    """Calling from_dict() before get() raises a value error."""
     with pytest.raises(ValueError):
         t = Tree()
-        assert t.from_dict()
+        assert t.from_dict({'foo': 'bar'})
 
 
 def test_from_dict_type():
