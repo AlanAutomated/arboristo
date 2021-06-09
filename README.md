@@ -5,4 +5,3 @@
 A light-weight package to lazily traverse a deeply nested dictionary.
 
 ![demo](demo.gif)
-
