@@ -45,6 +45,13 @@ def test_path_value():
     assert t.path == "abc"
 
 
+def test_from_dict_empty():
+    """An empty dict raises a value error."""
+    with pytest.raises(ValueError):
+        t = Tree()
+        assert t.from_dict({})
+
+
 def test_path_not_none():
     """Calling from_dict() before get() raises a value error."""
     with pytest.raises(ValueError):
@@ -57,13 +64,6 @@ def test_from_dict_type():
     with pytest.raises(TypeError):
         t = Tree()
         assert t.get("abc").from_dict("def")
-
-
-def test_from_dict_empty():
-    """An empty dict raises a value error."""
-    with pytest.raises(ValueError):
-        t = Tree()
-        assert t.get("abc").from_dict({})
 
 
 def test_source_value(return_dict):
