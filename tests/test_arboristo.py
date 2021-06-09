@@ -31,6 +31,13 @@ def test_path_type():
         assert t.path()
 
 
+def test_path_empty():
+    """Path arugment is not empty"""
+    with pytest.raises(ValueError):
+        t = Tree()
+        assert t.get()
+
+
 def test_path_value():
     """Value of path is the argument passed to get()."""
     t = Tree()
