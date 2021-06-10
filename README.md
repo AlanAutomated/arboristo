@@ -4,4 +4,4 @@
 
 A light-weight package to lazily traverse a deeply nested dictionary.
 
-![demo](demo.gif)
+![demo](https://raw.githubusercontent.com/AlanAutomated/arboristo/master/demo.gif)
