@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "arboristo"
-version = "0.1.0"
+version = "0.1.1"
 description = "A light-weight package to lazily traverse a deeply nested dictionary"
 authors = ["Alan Haynes <alan@nre.dev>"]
 license = "MIT"
