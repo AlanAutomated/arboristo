@@ -5,3 +5,35 @@
 A light-weight package to lazily traverse a deeply nested dictionary.
 
 ![demo](https://raw.githubusercontent.com/AlanAutomated/arboristo/master/demo.gif)
+
+## Installation
+```
+pip install arboristo
+```
+
+## Basic Usage
+
+```python
+>>> from arboristo.arbor import Tree
+>>>
+>>> t = Tree()
+>>>
+>>> my_dict = {
+...   "a": {
+...     "b": "bar",
+...     "c": {
+...       "d": {
+...         "e": {
+...           "f": "foo"
+...         }
+...       }
+...     }
+...   }
+... }
+>>>
+>>> print(t.get('b').from_dict(my_dict))
+[{'path': 'a.b', 'value': 'bar'}]
+>>>
+>>> print(t.get('a.d.f').from_dict(my_dict))
+[{'path': 'a.c.d.e.f', 'value': 'foo'}, {'path': 'a.c.d.e', 'value': {'f': 'foo'}}]
+```
