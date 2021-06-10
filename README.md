@@ -34,6 +34,6 @@ pip install arboristo
 >>> print(t.get('b').from_dict(my_dict))
 [{'path': 'a.b', 'value': 'bar'}]
 >>>
->>> print(t.get('a.d.f').from_dict(my_dict))
+>>> print(t.get('a.d.e').from_dict(my_dict))
 [{'path': 'a.c.d.e.f', 'value': 'foo'}, {'path': 'a.c.d.e', 'value': {'f': 'foo'}}]
 ```
